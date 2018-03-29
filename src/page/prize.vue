@@ -1,7 +1,7 @@
 
 <template>
     <div>
-        奖品记录
+        奖品记录111
     </div>
 </template>
 <script>
