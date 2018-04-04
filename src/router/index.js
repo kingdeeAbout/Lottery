@@ -9,6 +9,7 @@ import Prize from '../page/prize.vue'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',          // HTML5 history 消除# 后台续作配置 否则404
   routes: [
     // {
     //   path: '/',
@@ -18,22 +19,26 @@ export default new Router({
     {
       path: '/',
       name: 'courierWelfare',
-      component: CourierWelfare
+      component: CourierWelfare,
+      meta:{title:'快递员福利社'}
     },
     {
       path: '/welfareEntrance',
       name: 'WelfareEntrance',
-      component: WelfareEntrance
+      component: WelfareEntrance,
+      meta:{title:'我的奖品'}
     },
     {
       path: '/welfare',
       name: 'Welfare',
-      component: Welfare
+      component: Welfare,
+      meta:{title:'我的奖品'}
     },
     {
       path: '/prize',
       name: 'Prize',
-      component: Prize
+      component: Prize,
+      meta:{title:'我的奖品'}
     }
   ]
 })
