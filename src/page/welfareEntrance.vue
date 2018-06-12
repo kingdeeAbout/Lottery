@@ -64,6 +64,7 @@
       clickcallback () {
         this.$router.push({path: "/welfare"})
       }
+
     },
     components:{
       topHeader: topHeader,

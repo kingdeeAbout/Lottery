@@ -5,6 +5,7 @@ import CourierWelfare from '../page/courierWelfare.vue'
 import WelfareEntrance from '../page/welfareEntrance.vue'
 import Welfare from '../page/welfare.vue'
 import Prize from '../page/prize.vue'
+import Receipt from '../page/receipt/receipt.vue'
 
 Vue.use(Router)
 
@@ -39,6 +40,12 @@ export default new Router({
       name: 'Prize',
       component: Prize,
       meta:{title:'我的奖品'}
+    },
+    {
+      path: '/receipt',
+      name: 'Receipt',
+      component: Receipt,
+      meta:{title:'收件明细'}
     }
   ]
 })

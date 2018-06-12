@@ -2,7 +2,7 @@
 @visible 是否显示 Tip	boolean	—	false
 */
 <template>
-  <div class="red-tip-wrapper" v-if="visible">
+  <div class="red-envelope-tip-wrapper" v-if="visible">
     <div class="tip-container">
       <div class="tip-close" @click="close"></div>
       <div class="tip-title">
@@ -48,41 +48,28 @@
   @import "../../assets/less/color";
   @import "../../assets/less/mixin";
 
-  .red-tip-wrapper {
+  .red-envelope-tip-wrapper {
     width: 100%;
     height: 100%;
     position: fixed;
     top: 0;
-    z-index: 200;
+    z-index: 100;
     background: rgba(0,0,0,.6);
     display: flex;
     justify-content: center;
     align-items: center;
     .tip-container {
       position: relative;
-      width: 85%;
-      background-color: @white-color;
-      border-radius: 20px;
-      .tip-close {
-        width: 24px;
-        height: 24px;
-        .bg-image("icon_close");
-        color: @font-black;
-        text-align: center;
-        position: absolute;
-        right: 12px;
-        top: 12px;
-      }
+      width: 100%;
+      height: 480px;
+      .bg-image("popup-redenvelopes");
+
       .tip-title {
-        .bg-image("message");
         font-size: @font-20;
-        color: @font-white;
+        color: @luck-title;
         text-align: center;
-        padding-top: 37px;
+        padding-top: 110px;
         padding-bottom: 13px;
-        border-bottom: 1px solid @border-color;
-        border-top-left-radius:20px;
-        border-top-right-radius:20px;
       }
       .tip-content {
         margin: 20px 21px 43px 24px;
@@ -90,6 +77,33 @@
         color: @font-black;
         text-align: center;
       }
+    }
+  }
+  @media(min-device-width:360px)and(max-device-height:736px)and(-webkit-min-device-pixel-ratio:2){
+    /*iphone6/plus*/
+    .tip-close {
+      width: 24px;
+      height: 24px;
+      .bg-image("icon_close");
+      color: @font-black;
+      text-align: center;
+      position: absolute;
+      right: 75px;
+      top: 70px;
+      z-index: 100;
+    }
+  }
+  @media (device-height:568px) and (-webkit-min-device-pixel-ratio:2) {
+    /* 兼容iphone5 */
+    .tip-close {
+      width: 24px;
+      height: 24px;
+      .bg-image("icon_close");
+      color: @font-black;
+      text-align: center;
+      position: absolute;
+      right: 40px;
+      top: 70px;
     }
   }
 </style>

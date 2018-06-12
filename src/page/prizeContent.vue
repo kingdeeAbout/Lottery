@@ -21,17 +21,18 @@
       <div class="prize-title">奖品记录</div>
       <div class="prize-cards">
         <div class="prize-card" @click="openTip(tip.message)"  v-for="(item, index) in prizeList">
-          <img v-if= "item.prizeImg == '1'" src="../assets/img/ico-Prizerecord-card@2x.png">
-          <img v-else-if= "item.prizeImg == '2'" src="../assets/img/ico-Redenvelopes@2x.png">
-          <img v-else-if= "item.prizeImg == '3'" src="../assets/img/ico-priserecord-shortmassage@2x.png">
-          <img v-else-if= "item.prizeImg == '4'" src="../assets/img/ico-priserecord-material@2x.png">
+          <img v-if= "item.type == 321026001" src="../assets/img/ico-Prizerecord-card@2x.png">
+          <img v-else-if= "item.type == 321026000" src="../assets/img/ico-Redenvelopes@2x.png">
+          <img v-else-if= "item.type == 321026003" src="../assets/img/ico-priserecord-shortmassage@2x.png">
+          <img v-else-if= "item.type == 321026004" src="../assets/img/ico-priserecord-material@2x.png">
           <div class="prize-card-title">
-            <div class="prize-card-title-kind">{{item.prizeTitle}}</div>
-            <div class="prize-card-title-time">中奖日期： {{item.prizeTime}}</div>
+            <div class="prize-card-title-kind">{{item.title}}</div>
+            <div class="prize-card-title-time">中奖日期： {{item.createTime}}</div>
           </div>
           <div class="prize-card-status">
-            <div v-if="item.prizeTag == '1'">已领取</div>
-            <div v-else-if="item.prizeTag == '2'" class="active">待领取</div>
+            <div v-if="item.status == '1'">未领取</div>
+            <div v-else-if="item.status == '2'" class="active">已领取</div>
+            <div v-else-if="item.status == '3'" class="active">领取中</div>
           </div>
         </div>
         <!--<div class="prize-card" @click="openTip(tip.redBag)">-->
@@ -56,6 +57,9 @@
 </template>
 <script>
   import tip from '../packages/tip/tip.vue'
+  import Api from '../api/prizeApi'
+
+  const api = new Api();
 
   export default{
     data () {
@@ -66,31 +70,11 @@
           redBag: "红包"
         },
         tipTitle: tip.message,
-        prizeList: [{
-          prizeImg: "1",
-          prizeTitle: "快递员名片一盒",
-          prizeTime : "2018-03-06",
-          prizeTag: "1"
-        },
-          {
-            prizeImg: "2",
-            prizeTitle: "现金红包8.8元",
-            prizeTime : "2018-03-06",
-            prizeTag: "2"
-          },
-          {
-            prizeImg: "3",
-            prizeTitle: "免费短信",
-            prizeTime : "2018-03-06",
-            prizeTag: "1"
-          },
-          {
-            prizeImg: "4",
-            prizeTitle: "快递耗材",
-            prizeTime : "2018-03-06",
-            prizeTag: "2"
-          }]
+        prizeList: []
       }
+    },
+    created () {
+      this.getPrizeList();
     },
     methods: {
       openTip(tip) {
@@ -99,6 +83,16 @@
       },
       tipClose() {
         this.tipVisible = false;
+      },
+      getPrizeList() {
+        api.getPrizeList({userId: 817124089}).then((data) => {
+          if(data.status === "200") {
+            this.prizeList = data.data;
+//            console.log("data", data)
+          } else {
+
+          }
+        })
       }
     },
     components:{

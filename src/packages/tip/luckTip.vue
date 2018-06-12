@@ -2,7 +2,7 @@
 @visible 是否显示 Tip	boolean	—	false
 */
 <template>
-  <div class="red-tip-wrapper" v-if="visible">
+  <div class="luck-tip-wrapper" v-if="visible">
     <div class="tip-container">
       <div class="tip-close" @click="close"></div>
       <div class="tip-title">
@@ -48,7 +48,7 @@
   @import "../../assets/less/color";
   @import "../../assets/less/mixin";
 
-  .red-tip-wrapper {
+  .luck-tip-wrapper {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -90,6 +90,7 @@
       position: absolute;
       right: 75px;
       top: 70px;
+      z-index: 100;
     }
   }
   @media (device-height:568px) and (-webkit-min-device-pixel-ratio:2) {
