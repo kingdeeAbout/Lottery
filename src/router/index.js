@@ -25,25 +25,25 @@ export default new Router({
     },
     {
       path: '/welfareEntrance',
-      name: 'WelfareEntrance',
+      name: 'welfareEntrance',
       component: WelfareEntrance,
       meta:{title:'我的奖品'}
     },
     {
       path: '/welfare',
-      name: 'Welfare',
+      name: 'welfare',
       component: Welfare,
       meta:{title:'我的奖品'}
     },
     {
       path: '/prize',
-      name: 'Prize',
+      name: 'prize',
       component: Prize,
       meta:{title:'我的奖品'}
     },
     {
       path: '/receipt',
-      name: 'Receipt',
+      name: 'receipt',
       component: Receipt,
       meta:{title:'收件明细'}
     }

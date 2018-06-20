@@ -1,13 +1,18 @@
 <template>
   <div class="shoujian-wrapper">
     <div v-if="recType === '1'">
-      <div class="pl10">收件趋势</div>
+      <!--<div class="pannel mt10">-->
+        <!---->
+      <!--</div>-->
+
+      <div class="pannel mt10">收件趋势</div>
       <v-chart :data="chartData" prevent-default>
         <v-scale x :tick-count="3" />
         <v-tooltip :show-item-marker="false" show-x-value />
         <v-line />
       </v-chart>
-      <div class="pl10">详细数据</div>
+
+      <div class="pannel mt10">详细数据</div>
       <x-table :cell-bordered="false" style="background-color:#fff;">
         <thead>
         <tr>

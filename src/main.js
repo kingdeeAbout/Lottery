@@ -18,6 +18,14 @@ cookie.setCookie("STID", "100");
 
 const vConsole = new Vconsole()
 Vue.config.productionTip = false
+
+router.beforeEach((to, from, next) => {     // 可以在这里进行token验证
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  next();
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -28,7 +36,3 @@ new Vue({
   template: '<App/>'
 })
 
-router.beforeEach((to, from, next) => {     // 可以在这里进行token验证
-  document.title = to.meta.title;
-  next();
-});

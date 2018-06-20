@@ -7,7 +7,7 @@
         :check-sticky-support="false"
         :disabled="disabled"
       >
-        <tab :line-width="1" active-color='#317EE7'>
+        <tab :line-width="1" active-color='#4087E5'>
           <tab-item selected>收件</tab-item>
           <tab-item>收款</tab-item>
           <tab-item>客户数</tab-item>
@@ -20,6 +20,7 @@
       <checker
         style="padding: 15px 0;"
         v-model="demo5"
+        radio-required
         default-item-class="demo5-item"
         selected-item-class="demo5-item-selected"
       >
@@ -28,11 +29,12 @@
       </checker>
     </div>
 
-    <div class="pannel">
+    <div class="pannel mt10">
       <label>日期范围</label>
       <checker
         style="display: inline-block"
         v-model="date"
+        radio-required
         default-item-class="demo5-item"
         selected-item-class="demo5-item-selected"
       >
@@ -43,21 +45,23 @@
     </div>
 
     <div class="pannel">
-      <datetime
-        style="display: inline-block"
-        v-model="value1"
-        @on-change="change"
-        @on-cancel="log('cancel')"
-        @on-confirm="onConfirm"
-        @on-hide="log('hide', $event)"></datetime>
-      <span>至</span>
-      <datetime
-        style="display: inline-block"
-        v-model="value1"
-        @on-change="change"
-        @on-cancel="log('cancel')"
-        @on-confirm="onConfirm"
-        @on-hide="log('hide', $event)"></datetime>
+      <group>
+        <datetime
+          style="display: inline-block"
+          v-model="value1"
+          @on-change="change"
+          @on-cancel="log('cancel')"
+          @on-confirm="onConfirm"
+          @on-hide="log('hide', $event)"></datetime>
+        <span>至</span>
+        <datetime
+          style="display: inline-block"
+          v-model="value1"
+          @on-change="change"
+          @on-cancel="log('cancel')"
+          @on-confirm="onConfirm"
+          @on-hide="log('hide', $event)"></datetime>
+      </group>
     </div>
 
     <shou-jian :recType="demo5"></shou-jian>
@@ -65,7 +69,7 @@
 </template>
 
 <script>
-  import { Sticky, Tab, TabItem, Checker, CheckerItem, Datetime  } from 'vux'
+  import { Group, Sticky, Tab, TabItem, Checker, CheckerItem, Datetime  } from 'vux'
   import ShouJian from '../../packages/receipt/shoujian.vue'
 
   export default{
@@ -96,6 +100,7 @@
       },
     },
     components: {
+      Group,
       Sticky,
       Tab,
       TabItem,
@@ -117,6 +122,7 @@
     .weui-cell:before {
       border: none;
     }
+
     .demo5-item[data-v-6abb5a4d] {
       width: 80px;
       border-radius: 15px;
@@ -133,7 +139,7 @@
       margin-right: 6px;
     }
     .demo5-item-selected {
-      background-color: @active;
+      background-color: #FF9845;
       color: @font-white;
     }
   }
